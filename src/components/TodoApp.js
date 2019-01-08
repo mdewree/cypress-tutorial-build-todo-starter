@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import TodoForm from './TodoForm'
 import TodoList from './TodoList'
 import Footer from './Footer'
-import { saveTodo, loadTodos, destroyTodo } from './../lib/service';
+import { saveTodo, loadTodos, deleteTodo } from './../lib/service';
 
 
 export default class TodoApp extends Component {
@@ -41,7 +41,7 @@ export default class TodoApp extends Component {
   }
 
   handleDelete(id) {
-    destroyTodo(id)
+    deleteTodo(id)
       .then(() => this.setState({
         todos: this.state.todos.filter(t => t.id !== id)
       }))
