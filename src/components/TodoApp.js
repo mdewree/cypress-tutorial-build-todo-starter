@@ -61,7 +61,8 @@ export default class TodoApp extends Component {
               handleTodoSubmit={this.handleTodoSubmit} />
           </header>
           <section className="main">
-            <TodoList todos={this.state.todos} />
+            <TodoList todos={this.state.todos}
+              handleDelete={this.handleDelete} />
           </section>
           <Footer remaining={remaining} />
         </div>
