@@ -1,3 +1,5 @@
+import { isString } from "util";
+
 describe('List Items', () => {
     beforeEach(() => {
         cy.seedAndVisit();
@@ -17,7 +19,7 @@ describe('List Items', () => {
             .should('contain', 3)
     })
 
-    it.only('removes a todo', () => {
+    it('removes a todo', () => {
         cy.route({
             url: '/api/todos/1',
             method: 'DELETE',
@@ -34,5 +36,17 @@ describe('List Items', () => {
         cy.get('@list')
             .should('have.length', 3)
             .and('not.contain', 'Milk');
+    })
+
+    it.only('marks an incomplete item complete', () => {
+        cy.fixture('todos')
+            .then(todos => {
+                const target = Cypress._.head(todos)
+                cy.route(
+                    'PUT',
+                    `/api/todos/${target.id}`,
+                    Cypress._.merge(target, { isComplete: true })
+                )
+            })
     })
 })
