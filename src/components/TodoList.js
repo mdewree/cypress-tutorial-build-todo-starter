@@ -13,8 +13,9 @@ const TodoItem = props =>
     </div>
   </li>
 
-    export default props =>
+export default props =>
   <ul className="todo-list">
-      {props.todos.map(todo => <TodoItem key={todo.id} {...todo}
+    {props.todos.map(todo =>
+      <TodoItem key={todo.id} {...todo}
         handleDelete={props.handleDelete} />)}
-    </ul>
+  </ul>
