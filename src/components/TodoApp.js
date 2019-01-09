@@ -34,12 +34,12 @@ export default class TodoApp extends Component {
   handleTodoSubmit(event) {
     event.preventDefault();
     const newTodo = { name: this.state.currentTodo, isComplete: false };
-    saveTodo(newTodo)
-      .then(({ data }) => this.setState({
-        todos: this.state.todos.concat(data),
-        currentTodo: ''
-      }))
-      .catch(() => this.setState({ error: true }));
+      saveTodo(newTodo)
+        .then(({ data }) => this.setState({
+          todos: this.state.todos.concat(data),
+          currentTodo: ''
+        }))
+        .catch(() => this.setState({ error: true }));
   }
 
   handleDelete(id) {
@@ -79,7 +79,7 @@ export default class TodoApp extends Component {
           </header>
           <section className="main">
             <Route path='/:filter?' render={({ match }) =>
-              <TodoList 
+              <TodoList
                 todos={filterTodos(match.params.filter, this.state.todos)}
                 handleDelete={this.handleDelete}
                 handleToggle={this.handleToggle} />

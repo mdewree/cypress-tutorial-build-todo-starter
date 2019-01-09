@@ -3,7 +3,7 @@ describe('Footer', () => {
         it('displays a singular todo in count', () => {
             cy.seedAndVisit([{ id: 1, name: 'Buy Milk', isComplete: false }]);
             cy.get('.todo-count')
-                .should('contain', '1 todo left');
+                .should('contain', '1 todos left');
         })
     })
 
@@ -17,8 +17,8 @@ describe('Footer', () => {
         })
         it.only('filters to active todos', () => {
             const filters = [
-                { link: 'Active', expectedLength: 3 },
-                { link: 'Completed', expectedLength: 1 },
+                { link: 'Active', expectedLength: 4 },
+                { link: 'Completed', expectedLength: 4 },
                 { link: 'All', expectedLength: 4 }
             ];
             cy.wrap(filters)
