@@ -1,1 +1,14 @@
-{}
+{
+  "todos": [
+    {
+      "name": "Buy Milk",
+      "isComplete": false,
+      "id": 1
+    },
+    {
+      "name": "Buy Bread",
+      "isComplete": false,
+      "id": 3
+    }
+  ]
+}

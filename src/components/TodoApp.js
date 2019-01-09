@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import TodoForm from './TodoForm'
 import TodoList from './TodoList'
 import Footer from './Footer'
-import { saveTodo, loadTodos, deleteTodo, updateTodo } from './../lib/service';
+import { saveTodo, loadTodos, deleteTodo, updateTodo } from '../lib/service'
+import { filterTodos } from '../lib/utils'
 
 
 export default class TodoApp extends Component {
@@ -77,9 +78,12 @@ export default class TodoApp extends Component {
               handleTodoSubmit={this.handleTodoSubmit} />
           </header>
           <section className="main">
-            <TodoList todos={this.state.todos}
-              handleDelete={this.handleDelete}
-              handleToggle={this.handleToggle} />
+            <Route path='/:filter?' render={({ match }) =>
+              <TodoList 
+                todos={filterTodos(match.params.filter, this.state.todos)}
+                handleDelete={this.handleDelete}
+                handleToggle={this.handleToggle} />
+            } />
           </section>
           <Footer remaining={remaining} />
         </div>
